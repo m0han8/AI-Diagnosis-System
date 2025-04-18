@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI-Driven Health Diagnosis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: url('https://www.strategyand.pwc.com/m1/en/strategic-foresight/sector-strategies/healthcare/ai-powered-healthcare-solutions/img01-section1.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2b6cb0;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 12px 16px;
+            font-size: 16px;
+            width: 60%;
+            border: 1px solid #cbd5e0;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3182ce;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+        }
+
+        input[type="submit"] {
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2c5282;
+        }
+
+        .alert p {
+            background: #fed7d7;
+            color: #721c24;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .report h2 {
+            color: #2b6cb0;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .report p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .report p strong {
+            color: #2a4365;
+        }
+
+        .diagnosis {
+            background: #ebf8ff;
+            padding: 15px 20px;
+            border-left: 5px solid #3182ce;
+            border-radius: 10px;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        .graph {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .graph img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            input[type="text"] {
+                width: 100%;
+            }
+
+            form {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI-Driven Health Diagnosis</h1>
+
+        <form method="POST">
+            <input type="text" name="patient_number" placeholder="Enter Patient Number" required>
+            <input type="submit" value="Analyze">
+        </form>
+
+        {% if alerts %}
+            <div class="alert">
+                {% for alert in alerts %}
+                    <p>{{ alert }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if patient_data %}
+            <div class="report">
+                <h2>Patient {{ patient_data['Patient Number'] }}</h2>
+                <p>🩺 <strong>Health Status:</strong> {{ patient_data['Health Status'] }}</p>
+                <p>💖 <strong>Blood Pressure:</strong> {{ patient_data['Blood Pressure'] }} mmHg</p>
+                <p>💓 <strong>Heart Rate:</strong> {{ patient_data['Heart Rate'] }} bpm</p>
+                <p>🌬 <strong>Oxygen Levels:</strong> {{ patient_data['Oxygen Levels'] }}%</p>
+                <p>🍬 <strong>Blood Sugar:</strong> {{ patient_data['Blood Sugar'] }} mg/dL</p>
+                <p>🩸 <strong>Cholesterol:</strong> {{ patient_data['Cholesterol'] }} mg/dL</p>
+                <p>📝 <strong>Doctor’s Suggestion:</strong> {{ patient_data["Doctor’s Suggestion"] }}</p>
+
+                <div class="diagnosis">
+                    🧬 <strong>Diagnosis:</strong> {{ diagnosis }}
+                </div>
+
+                {% if graph_url %}
+                    <div class="graph">
+                        <h3>📊 Health Vitals Chart</h3>
+                        <img src="{{ graph_url }}" alt="Health Graph">
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
