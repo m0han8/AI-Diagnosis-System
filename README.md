@@ -1,7 +1,7 @@
 # AI-Diagnosis-System
 
 
-Welcome to the **AI-Powered Health diagnosis System**, an intelligent web-based platform that provides real-time health analysis and insights. Built with **Flask**, **Python**, **HTML**, **CSS**, and **JavaScript**, this application offers personalized health reports and AI-driven suggestions based on real patient data.
+Welcome to the **AI-Powered Health Diagnosis System**, an intelligent web-based platform that provides real-time health analysis and insights. Built with **Flask**, **Python**, **HTML**, **CSS**, and **JavaScript**, this application offers personalized health reports and AI-driven suggestions based on real patient data.
 
 The goal of this project is to provide healthcare professionals, medical researchers, or anyone interested in health data analysis, with a user-friendly interface that makes interpreting health metrics more accessible.
 
